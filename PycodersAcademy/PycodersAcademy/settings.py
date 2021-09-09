@@ -27,7 +27,7 @@ SECRET_KEY = 'qhb7b6rqu&+q_pnsfrfbg#8ip6q%@-dc9m4w)%hew5xon$-vos'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pycodersacademy.heroku.com', '127.0.0.1']
 
 
 # Application definition
