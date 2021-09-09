@@ -86,7 +86,7 @@ CORS_ORIGIN_WHITELIST = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ec2-3-225-204-194.compute-1.amazonaws.com',
+        'NAME': 'postgresql-defined-22493',
         'USER': 'bnjnyipdmybjwv',
         'PASSWORD': '10b3dfc2ba922e8591745c8f6ce5cb7668264a2ea994a9196b93654fed227619',
         'HOST': 'ec2-3-225-204-194.compute-1.amazonaws.com',
