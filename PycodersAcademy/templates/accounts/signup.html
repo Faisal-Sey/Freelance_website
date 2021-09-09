@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<!-- Page Content -->
+
+<a href="{% url 'register' %}"
+   class="">
+                  <span class="progression-bar__item-content">
+                      <span class="progression-bar__item-text h5 mb-0 text-uppercase">Account details</span>
+                  </span>
+</a>
+
+{% for message in messages %}
+<div class="alert alert-danger" role="alert">
+    {{message}}
+</div>
+{% endfor %}
+
+
+<div class="page-section container page__container">
+    <div class="col-lg-10 p-0 mx-auto">
+        <div class="row">
+            <div class="col-md-6 mb-24pt mb-md-0">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="form-label"
+                               for="username">Your Username:</label>
+                        <input id="username"
+                               type="text"
+                               name="username"
+                               class="form-control"
+                               placeholder="Your username ..." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"
+                               for="name">Your first and last name:</label>
+                        <input id="name"
+                               type="text"
+                               name="fullname"
+                               class="form-control"
+                               placeholder="Your first and last name ..." required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label"
+                               for="email">Your email:</label>
+                        <input id="email"
+                               type="email"
+                               name="email"
+                               class="form-control"
+                               placeholder="Your email address ..." required>
+                    </div>
+                    <div class="form-group mb-24pt">
+                        <label class="form-label"
+                               for="password">Password:</label>
+                        <input id="password"
+                               type="password"
+                               name="password1"
+                               class="form-control"
+                               placeholder="Your password ..." required>
+                    </div>
+                    <div id="password_info1" style="display:none;color:red;margin-bottom:20px;">Password should consist
+                        of alphabets and numbers.<br>
+                        Password should be at least 8 characters
+                    </div>
+                    <div class="form-group mb-24pt">
+                        <label class="form-label"
+                               for="confirm-password">Confirm Password:</label>
+                        <input id="confirm-password"
+                               type="password"
+                               name="password2"
+                               class="form-control"
+                               placeholder="Confirm Your password ..." required>
+                    </div>
+                    <div id="password_info2" style="display:none;color:red;margin-bottom:20px;">Password should consist
+                        of alphabets and numbers.<br>
+                        Password should be at least 8 characters
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create account</button>
+                </form>
+                <br/>
+                <span>Already have an account? | <a href="{% url 'login' %}"
+                                                    style="text-decoration:underline;">Login</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- // END Page Content -->
+{% endblock %}
