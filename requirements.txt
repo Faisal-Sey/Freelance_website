@@ -185,4 +185,5 @@ widgetsnbextension==3.5.1
 wrapt==1.12.1
 xlrd==2.0.1
 zope.interface==5.2.0
-psycopg2
+psycopg2-binary
+dj-database-url
