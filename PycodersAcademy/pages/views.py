@@ -60,8 +60,6 @@ class CoursePreviewView(View):
             for val in dict:
                 if val.division_header == key:
                     desc.append(val.description)
-
-            print(desc)
             return desc
 
         @register.filter
@@ -93,6 +91,27 @@ class CoursePreviewView(View):
                         break
             return returning_list
 
+        @register.filter
+        def check_previous(dict, key):
+            details = (CourseDetails.objects.all()).order_by("-time")
+            details_list = {}
+            for det in details:
+                details_list[det.divison_header] = det.state
+
+            state = ""
+            key_index = ([details_list.keys()]).index(details_list[key])
+            if key_index - 1:
+                current_list = ([details_list.keys()])[key_index - 1]
+                if details_list[current_list] == "off":
+                    print("off")
+                    state = "off"
+                elif details_list[current_list] == "on":
+                    print("on")
+                    state = "on"
+            else:
+                pass
+
+            return state
         context = {'course': current_course, 'content_dict': contents, 'sections': sections}
         return render(self.request, "student-course.html", context)
 
