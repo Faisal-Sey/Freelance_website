@@ -27,7 +27,7 @@ SECRET_KEY = 'qhb7b6rqu&+q_pnsfrfbg#8ip6q%@-dc9m4w)%hew5xon$-vos'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pycodersacademy.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -84,12 +84,12 @@ CORS_ORIGIN_WHITELIST = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pycodersacademy',
-        'USER': 'root',
-        'PASSWORD': '11111',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbelin5dtit269',
+        'USER': 'bnjnyipdmybjwv',
+        'PASSWORD': '10b3dfc2ba922e8591745c8f6ce5cb7668264a2ea994a9196b93654fed227619',
+        'HOST': 'ec2-3-225-204-194.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
