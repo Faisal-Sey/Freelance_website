@@ -10,7 +10,7 @@
                     <div class="mdk-box__content">
                         <div class="hero py-64pt text-center text-sm-left">
                             <div class="container page__container">
-                                <h1 class="text-white">{{ details.course_name }}</h1>
+                                <h1 class="text-white">{{ details.header }}</h1>
                                 <p class="lead text-white-50 measure-hero-lead">{{ details.description }}</p>
                                 <div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
                                     <a href="{% url 'student_lesson' slug='python' %}"
@@ -29,7 +29,7 @@
                             <li class="nav-item navbar-list__item">
                                 <div class="media align-items-center">
                                     <span class="media-left mr-16pt">
-                                        <img src="{{ details.trainer_image.url }}"
+                                        <img src=""
                                              width="40"
                                              alt="avatar"
                                              class="rounded-circle">
@@ -69,72 +69,111 @@
                         <div class="page-separator">
                             <div class="page-separator__text">Table of Contents</div>
                         </div>
-                        <div class="row mb-0">
-                            <div class="col-lg-7">
 
+                        {% for head in head_keys %}
+                        <div class="row mb-0" style="margin-bottom:30px !important;">
+                            <div class="col-lg-7">
                                 <div class="accordion js-accordion accordion--boxed list-group-flush"
                                      id="parent">
-                                    <div class="accordion__item">
-                                        <a href="#"
-                                           class="accordion__toggle collapsed"
+                                    {% if head == 'Course Preview' %}
+                                    <div class="accordion__item open">
+                                        <a href="{{head.video}}"
+                                           class="accordion__toggle"
                                            data-toggle="collapse"
-                                           data-target="#course-toc"
+                                           data-target="#course-toc-{{forloop.counter}}"
                                            data-parent="#parent">
-                                            <span class="flex">Course Overview</span>
+                                            <span class="flex">{{head}}</span>
                                             <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
                                         </a>
-                                        <div class="accordion__menu collapse"
-                                             id="course-toc">
-                                            <div class="accordion__menu-link active">
-                                                <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
-                                                    <i class="material-icons icon-16pt">play_circle_outline</i>
+                                        <div class="accordion__menu collapse show"
+                                             id="course-toc-{{forloop.counter}}">
+                                            {% for val in headers|get_content:head %}
+                                            <div class="accordion__menu-link">
+                                                {% if state|get_content:val == 'off' %}
+                                                <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
+                                                    <i class="material-icons icon-16pt">lock</i>
                                                 </span>
                                                 <a class="flex"
-                                                   href="{% url 'student_lesson' slug='python' %}">Watch Trailer</a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {% for val in sections %}
-                                    {% if val.slug == details.slug %}
-                                    {% for sect_head in sections|get_sections:val.slug %}
-                                    {% with outer_counter=forloop.counter %}
-                                    <div class="accordion__item">
-                                        <a href="#"
-                                           class="accordion__toggle collapsed"
-                                           data-toggle="collapse"
-                                           data-target="#course-toc-{{outer_counter}}"
-                                           data-parent="#parent">
-                                            <span class="flex">{{sect_head}}</span>
-                                            <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
-                                        </a>
-                                        {% for conts in content_dict|get_contents:sect_head %}
-                                        <div class="accordion__menu collapse"
-                                             id="course-toc-{{outer_counter}}">
-                                            <div class="accordion__menu-link">
-                                                {% if sections|check_status:conts == "off" %}
-                                                <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
-                                                    <i class="material-icons icon-16pt">play_circle_outline</i>
-                                                </span>
-                                                {% else %}
+                                                   href="">{{val}}</a>
+                                                {% elif state|get_content:val == 'on' %}
                                                 <span class="icon-holder icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
                                                     <i class="material-icons icon-16pt">check_circle</i>
                                                 </span>
-                                                {% endif %}
+                                                {% if val == 'Introduction' %}
                                                 <a class="flex"
-                                                   href="{% url 'lesson_view' slug=sections|reformat_slug:conts %}">{{ conts }}</a>
+                                                   target="_blank"
+                                                   href="{{ videos|get_content:val }}">{{val}}</a>
+                                                    {% else %}
+                                                <a class="flex"
+                                                   href="student-lesson.html">{{val}}</a>
+                                                    {% endif %}
+                                                {% else %}
+                                                <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
+                                                    <i class="material-icons icon-16pt">play_circle_outline</i>
+                                                </span>
+                                                {% if val == 'Introduction' %}
+                                                <a class="flex"
+                                                   target="_blank"
+                                                   href="{{ videos|get_content:val }}">{{val}}</a>
+                                                    {% else %}
+                                                <a class="flex"
+                                                   href="student-lesson.html">{{val}}</a>
+                                                    {% endif %}
+                                                {% endif %}
+                                                <span class="text-muted">{{ video_length|get_content:val }}</span>
                                             </div>
+                                            {% endfor %}
                                         </div>
-                                        {% endfor %}
                                     </div>
-                                    {% endwith %}
-                                    {% endfor %}
+                                    {% else %}
+                                    <div class="accordion__item">
+                                        <a href="{{head.video}}"
+                                           target="_blank"
+                                           class="accordion__toggle collapsed"
+                                           data-toggle="collapse"
+                                           data-target="#course-toc-{{forloop.counter}}"
+                                           data-parent="#parent">
+                                            <span class="flex">{{head}}</span>
+                                            <span class="accordion__toggle-icon material-icons">keyboard_arrow_down</span>
+                                        </a>
+                                        <div class="accordion__menu collapse"
+                                             id="course-toc-{{forloop.counter}}">
+                                            {% for val in headers|get_content:head %}
+                                            <div class="accordion__menu-link">
+                                                {% if state|get_content:val == 'off' %}
+                                                <span class="icon-holder icon-holder--small icon-holder--light rounded-circle d-inline-flex icon--left">
+                                                    <i class="material-icons icon-16pt">lock</i>
+                                                </span>
+                                                <a class="flex"
+                                                   href="">{{val}}</a>
+                                                {% elif state|get_content:val == 'on' %}
+                                                <span class="icon-holder icon-holder--small icon-holder--dark rounded-circle d-inline-flex icon--left">
+                                                    <i class="material-icons icon-16pt">check_circle</i>
+                                                </span>
+                                                <a class="flex"
+                                                   href="{% url 'lesson_view' slug=template_name|get_slug:val %}">
+                                                    {{val}}
+                                                </a>
+                                                {% else %}
+                                                <span class="icon-holder icon-holder--small icon-holder--primary rounded-circle d-inline-flex icon--left">
+                                                    <i class="material-icons icon-16pt">play_circle_outline</i>
+                                                </span>
+                                                <a class="flex"
+                                                   href="{% url 'lesson_view' slug=template_name|get_slug:val %}">
+                                                    {{val}}
+                                                </a>
+                                                {% endif %}
+                                                <span class="text-muted">8m 42s</span>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
                                     {% endif %}
-                                    {% endfor %}
                                 </div>
-
                             </div>
                         </div>
+                        {% endfor %}
+
                     </div>
                 </div>
 

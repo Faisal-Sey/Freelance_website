@@ -10,7 +10,7 @@ class CoursePreview(models.Model):
     header = models.CharField(max_length=255)
     description = models.TextField()
     video_time = models.CharField(max_length=50, blank=True, null=True)
-    video = models.FileField(blank=True, null=True)
+    video = models.URLField(blank=True, null=True)
     ratings = models.CharField(max_length=50, blank=True, null=True)
     slug = models.CharField(max_length=50)
     section_1 = models.CharField(max_length=150, blank=True, null=True)
@@ -62,15 +62,16 @@ class TrainerDetail(models.Model):
         return self.name
 
 
-class CourseDetails(models.Model):
+class CourseDetail(models.Model):
     slug = models.CharField(max_length=50)
     division_header = models.CharField(max_length=255)
     description = models.TextField(max_length=500)
     video_length = models.CharField(max_length=10, blank=True, null=True)
-    video = models.FileField(blank=True, null=True)
+    video = models.URLField(blank=True, null=True)
     course_slug = models.CharField(max_length=50)
     state = models.CharField(max_length=20)
     time = models.DateTimeField(auto_now_add=True)
+    template_name = models.CharField(max_length=200, blank=True, null=True)
 
     objects = models.Manager()
 

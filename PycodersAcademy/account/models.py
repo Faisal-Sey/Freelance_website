@@ -3,7 +3,7 @@ from django.conf import settings
 # Create your models here.
 
 
-class Courses(models.Model):
+class Course(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=100, blank=True, null=True)
     progress = models.IntegerField(blank=True, null=True)
