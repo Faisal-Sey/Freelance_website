@@ -27,8 +27,8 @@ SECRET_KEY = 'qhb7b6rqu&+q_pnsfrfbg#8ip6q%@-dc9m4w)%hew5xon$-vos'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pycodersacademy.herokuapp.com', '127.0.0.1']
-
+ALLOWED_HOSTS = ['*']
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Application definition
 
@@ -46,7 +46,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -75,23 +74,20 @@ TEMPLATES = [
 WSGI_APPLICATION = 'PycodersAcademy.wsgi.application'
 
 
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000"
-]
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbelin5dtit269',
-        'USER': 'bnjnyipdmybjwv',
-        'PASSWORD': '10b3dfc2ba922e8591745c8f6ce5cb7668264a2ea994a9196b93654fed227619',
-        'HOST': 'ec2-3-225-204-194.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pycodersacademy',
+        'USER': 'root',
+        'PASSWORD': '11111',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
+
 
 
 # Password validation
