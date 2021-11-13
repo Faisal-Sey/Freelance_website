@@ -3,7 +3,7 @@
 {% block content %}
 
                 <!-- Page Content -->
-
+{% for details in course %}
                 <div class="page-section bg-white border-bottom-2">
                     <div class="container page__container">
 
@@ -19,13 +19,13 @@
                                 <div class="d-flex align-items-center">
                                     <a href="teacher-profile.html"
                                        class="avatar avatar-sm mr-12pt">
-                                        <img src="{% static 'images/people/50/guy-6.jpg' %}"
+                                        <img src="{{ details.trainer_image.url }}"
                                              alt="author"
                                              class="avatar-img rounded-circle">
                                     </a>
                                     <div class="mr-16pt">
                                         <a href="teacher-profile.html"
-                                           class="card-title">Faisal Issaka</a>
+                                           class="card-title">{{ details.trainer }}</a>
                                         <div class="d-flex align-items-center">
                                             <small class="text-50 mr-2">3 days ago</small>
                                             <small class="text-50 mr-2">2 min read</small>
@@ -258,15 +258,15 @@
 
                                 <div class="media align-items-center mb-16pt">
                                     <span class="media-left mr-16pt">
-                                        <img src="{% static 'images/people/50/guy-6.jpg' %}"
+                                        <img src="{{ details.trainer_image.url }}"
                                              width="40"
                                              alt="avatar"
                                              class="rounded-circle">
                                     </span>
                                     <div class="media-body">
                                         <a class="card-title m-0"
-                                           href="teacher-profile.html">Faisal Issaka</a>
-                                        <p class="text-50 lh-1 mb-0">Instructor</p>
+                                           href="teacher-profile.html">{{ details.trainer }}</a>
+                                        <p class="text-50 lh-1 mb-0">{{ details.role }}</p>
                                     </div>
                                 </div>
 
@@ -317,4 +317,5 @@
                 })
             })()
         </script>
+{% endfor %}
 {% endblock %}

@@ -25,7 +25,7 @@ def my_courses(request):
 
 
 class StudentLesson(View):
-    def get(self, **kwargs):
+    def get(self, *args, **kwargs):
         slug = kwargs["slug"]
         current_course = CoursePreview.objects.filter(slug=slug)
         context = {'course': current_course}
@@ -37,7 +37,7 @@ def student_path(request):
 
 
 class CoursePreviewView(View):
-    def get(self, **kwargs):
+    def get(self, *args, **kwargs):
         slug = kwargs["slug"]
         current_course = CoursePreview.objects.filter(slug=slug)
         contents = CourseDetail.objects.filter(course_slug=slug).values()
@@ -80,9 +80,11 @@ class LessonView(View):
         slug = kwargs["slug"]
         split_slug = str(slug).split('-')
         template_name = split_slug[1]
+        new_template_name = (' '.join(template_name.split("_"))).title()
         slug_name = split_slug[0]
-        # new_slug = CourseDetail.objects.get(slug=slug)
-        # new_slug.state = "on"
-        # new_slug.save()
-        context = {}
+        new_slug = CourseDetail.objects.get(description=new_template_name)
+        new_slug.state = 'on'
+        new_slug.save()
+        course_details = CoursePreview.objects.filter(slug=slug_name)
+        context = {'course': course_details}
         return render(self.request, f"course_templates/{slug_name}/{template_name}.html", context)
