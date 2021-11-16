@@ -11,7 +11,7 @@
                     <div class="media-left mr-16pt">
                         <a href="student-course.html"><img src="{{ details.logo.url }}"
                                                            width="40"
-                                                           alt="Python"
+                                                           alt="{{slug}}"
                                                            class="rounded"></a>
                     </div>
                     <div class="media-body">
@@ -49,15 +49,15 @@
                     <div class="player embed-responsive-item" style="background-color: inherit!important;">
                         <div class="player__content">
                             <div class="player__image"
-                                 style="--player-image: url('../images/python/intro.jpg')"></div>
-                            <a href="https://youtu.be/Hk-TJvlJ0h8"
+                                 style="--player-image: url('../images/{{slug}}/intro.jpg')"></div>
+                            <a href="{{ details.video }}"
                                class="player__play bg-primary">
                                 <span class="material-icons">play_arrow</span>
                             </a>
                         </div>
                         <div class="player__embed d-none">
                             <iframe class="embed-responsive-item"
-                                    src="https://youtu.be/Hk-TJvlJ0h8"
+                                    src="{{ details.video }}"
                                     allowfullscreen=""></iframe>
                         </div>
                     </div>
@@ -65,13 +65,13 @@
 
                 <div class="d-flex flex-wrap align-items-end mb-16pt">
                     <h1 class="text-white flex m-0">{{ details.header }}</h1>
-                    <p class="h1 text-white-50 font-weight-light m-0">50:13</p>
+                    <p class="h1 text-white-50 font-weight-light m-0">{{ details.video_time }}</p>
                 </div>
 
                 <p class="hero__lead measure-hero-lead text-white-50 mb-24pt">{{ details.description }}</p>
 
                 <div class="d-flex flex-column flex-sm-row align-items-center justify-content-start">
-                    <a href="lesson.html"
+                    <a href="{{ details.video }}"
                        class="btn btn-outline-white mb-16pt mb-sm-0 mr-sm-16pt">Watch trailer <i
                             class="material-icons icon--right">play_circle_outline</i></a>
                     <a href="{% url 'course_preview' slug=slug %}"
