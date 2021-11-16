@@ -82,9 +82,23 @@ class LessonView(View):
         template_name = split_slug[1]
         new_template_name = (' '.join(template_name.split("_"))).title()
         slug_name = split_slug[0]
+        descriptions = []
+        for description in CourseDetail.objects.all():
+            descriptions.append(description.description)
+        current = descriptions.index(new_template_name)
+        next_item = ''
+        if current == len(descriptions):
+            pass
+        else:
+            next_item = descriptions[current+1]
         new_slug = CourseDetail.objects.get(description=new_template_name)
         new_slug.state = 'on'
         new_slug.save()
+        if next_item != "":
+            next_new_slug = CourseDetail.objects.get(description=next_item)
+            next_new_slug.state = 'progress'
+            next_new_slug.save()
+
         course_details = CoursePreview.objects.filter(slug=slug_name)
         context = {'course': course_details}
         return render(self.request, f"course_templates/{slug_name}/{template_name}.html", context)

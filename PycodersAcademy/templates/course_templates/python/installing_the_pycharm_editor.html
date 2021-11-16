@@ -1,0 +1,237 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+                <!-- Page Content -->
+{% for details in course %}
+                <div class="page-section bg-white border-bottom-2">
+                    <div class="container page__container">
+
+                        <div class="d-flex flex-column flex-md-row align-items-center align-items-md-start flex mb-16pt text-center text-md-left">
+                            <div class="avatar overlay overlay--primary mb-16pt mb-md-0 mr-md-16pt">
+                                <img src="{% static 'images/paths/sketch_40x40@2x.png' %}"
+                                     class="avatar-img rounded"
+                                     alt="lesson">
+                                <div class="overlay__content"></div>
+                            </div>
+                            <div class="flex">
+                                <h1 class="h2 measure-lead-max mb-16pt">Installing The Pycharm Editor</h1>
+                                <div class="d-flex align-items-center">
+                                    <a href="teacher-profile.html"
+                                       class="avatar avatar-sm mr-12pt">
+                                        <img src="{{ details.trainer_image.url }}"
+                                             alt="author"
+                                             class="avatar-img rounded-circle">
+                                    </a>
+                                    <div class="mr-16pt">
+                                        <a href="teacher-profile.html"
+                                           class="card-title">{{ details.trainer }}</a>
+                                        <div class="d-flex align-items-center">
+                                            <small class="text-50 mr-2">3 days ago</small>
+                                            <small class="text-50 mr-2">2 min read</small>
+                                            <a href=""
+                                               class="text-50"><small>Liked</small></a>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a href=""
+                                           class="text-50 d-flex align-items-center text-decoration-0">
+                                            <i class="material-icons icon--left">favorite_border</i> 3</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="page-section border-bottom-2">
+                    <div class="container page__container">
+
+                        <div class="mb-24pt">
+                            <a href=""
+                               class="chip chip-outline-secondary">Python</a>
+                            <a href=""
+                               class="chip chip-outline-secondary">Coding</a>
+                        </div>
+
+                        <div class="d-flex flex-column flex-md-row align-items-md-center mb-16pt">
+                            <div class="mb-16pt mb-md-0 mr-md-16pt">
+                                <div class="rounded p-relative o-hidden overlay overlay--primary">
+                                    <img class="img-fluid rounded"
+                                         src="{% static 'images/paths/sketch_200x168.png' %}"
+                                         alt="image">
+                                    <div class="overlay__content"></div>
+                                </div>
+                            </div>
+                            <div class="flex">
+                                <p class="lead measure-paragraph-max">
+                                    In our previous lesson, we look at downloading and installing the python important
+                                  softwares. We looked at the IDLE, which we said it an editor to write python codes.
+                                  In this lesson, we look at an editor which can serve the same purpose as the IDLE and
+                                  even better.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h4>What is an Editor</h4>
+
+                        <div class="d-flex flex-column flex-md-row mb-32pt">
+                            <div class="flex mb-16pt mb-md-0 mr-md-16pt">
+                                <p class="lead text-70 measure-paragraph-max">
+                                    Editors, normally known as Integrated Development Environment (IDE), is an
+                                    environment that provides you with a space to write your codes. This implies that,
+                                    to create softwares or programs using python programming language, a software in
+                                    which our codes will be written in is needed.
+                                </p>
+                            </div>
+                        </div>
+
+                        <h4>Types of Editors</h4>
+
+                        <div class="d-flex flex-column flex-md-row mb-32pt">
+                            <div class="flex mb-16pt mb-md-0 mr-md-16pt">
+                                <p class="lead text-70 measure-paragraph-max">
+                                    There are two main types of editors for writing Python Programming codes. They are
+                                    the <b style="font-weight:700;">Writing only Editors</b> and the
+                                    <b style="font-weight:700;">Writing and Running Editors</b>
+                                </p>
+                                <h5><u>Writing only Editors</u></h5>
+                                <p class="lead text-70 measure-paragraph-max">
+                                This is the first type of editor and existence long before the first of the second type
+                                of editors was published. The Writing only Editors are only used for writing of the codes.
+                                The process of display of the output from the code becomes tedious. The stages involved
+                                in running codes from Writing only Editors are as follows:
+                                </p>
+                                <ul class="lead text-70 measure-paragraph-max">
+                                    <li>The Code is written in the Writing only Editor.</li>
+                                    <li>Third party software such as the windows command prompt is then used to
+                                    run the written code.</li>
+                                    <li>An output is displayed in the software after a successful run.</li>
+                                </ul>
+                                <p class="lead text-70 measure-paragraph-max"> Example of this type of Editor is Notepad++</p>
+
+                                <h5><u>Writing and Run Editors</u></h5>
+                                <p class="lead text-70 measure-paragraph-max">
+                                This is the modern type of editors. This type of editor by default detects the python interpreter
+                                then passes the code written in the editor to it. These types of editors makes Python Programming
+                                very easy and also very efficient since realtime result is received as the coding is in process.
+                                The stages involved in running codes from Writing and Run Editors are as follows:
+                                </p>
+                                <ul class="lead text-70 measure-paragraph-max">
+                                    <li>The Code is written in the editing section of the Editor.</li>
+                                    <li>A button present in the editor is clicked to run the code.</li>
+                                    <li>An output is displayed on the console of the editor.</li>
+                                </ul>
+                                <p class="lead text-70 measure-paragraph-max"> Example of this type of Editor is Pycharm.</p>
+                            </div>
+                        </div>
+
+                        <h4>Downloading the Pycharm Editor</h4>
+
+                        <div class="d-flex flex-column flex-md-row mb-32pt">
+                            <div class="flex mb-16pt mb-md-0 mr-md-16pt">
+                                <p class="lead text-70 measure-paragraph-max">
+                                    The Pycharm Editor is used for both writing and running of codes. It heavily supports
+                                    the Python Programming Language alongside other Programming languages and also markup
+                                    languages including HTML. It has a lot of features which makes it easy to use.
+                                </p>
+                                <h5><u>Features of the Pycharm Editor</u></h5>
+                                <p class="lead text-70 measure-paragraph-max">
+                                    For full features of the Pycharm Editor, visit
+                                    <a href="https://www.jetbrains.com">here</a>
+                                    Below are some popular features of the Pycharm Editor.
+                                </p>
+                                <ul class="lead text-70 measure-paragraph-max">
+                                    <li>Support for other Programming Languages.</li>
+                                    <li>Github tool to push and update your code, among others.</li>
+                                    <li>Support for Django and other Web Framework.</li>
+                                </ul>
+                                <p class="lead text-70 measure-paragraph-max">
+                                Pycharm comes in two versions. The Professional version which is a paid package provides full support to
+                                    all the features and the Community version which is a free package also provides some basic support
+                                    to its features.
+                                    Read about the differences in both versions
+                                    <a href="https://blog.jetbrains.com/pycharm/2017/09/
+                                    pycharm-community-edition-and-professional-edition-explained-licenses-and-more/">
+                                        here.</a>
+                                </p>
+
+                                <a
+                                        class="btn btn-primary"
+                                        href="https://jetbrains.com/pycharm/download/">
+                                    download the latest version of Pycharm
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="measure-lead-max">
+
+                            <div class="mb-8pt">
+                                <div class="page-separator">
+                                    <div class="page-separator__text">Author</div>
+                                </div>
+
+                                <div class="media align-items-center mb-16pt">
+                                    <span class="media-left mr-16pt">
+                                        <img src="{{ details.trainer_image.url }}"
+                                             width="40"
+                                             alt="avatar"
+                                             class="rounded-circle">
+                                    </span>
+                                    <div class="media-body">
+                                        <a class="card-title m-0"
+                                           href="teacher-profile.html">{{ details.trainer }}</a>
+                                        <p class="text-50 lh-1 mb-0">{{ details.role }}</p>
+                                    </div>
+                                </div>
+
+                                <a href="teacher-profile.html"
+                                   class="btn btn-white mb-24pt">Follow</a>
+                            </div>
+
+                            <div class="page-separator">
+                                <div class="page-separator__text">Comments</div>
+                            </div>
+
+                            <div class="d-flex mb-24pt">
+                                <a href=""
+                                   class="avatar avatar-sm mr-12pt">
+                                    <span class="avatar-title rounded-circle">LB</span>
+                                </a>
+                                <div class="flex">
+                                    <div class="form-group">
+                                        <label for="comment"
+                                               class="form-label">Your comment</label>
+                                        <textarea class="form-control"
+                                                  name="comment"
+                                                  id="comment"
+                                                  rows="3"
+                                                  placeholder="Type here to leave a comment ..."></textarea>
+                                    </div>
+                                    <button class="btn btn-outline-secondary">Post comment</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- // END Page Content -->
+        <script>
+            (function() {
+                'use strict';
+                // ENABLE sidebar menu tabs
+                $('.js-sidebar-mini-tabs [data-toggle="tab"]').on('click', function(e) {
+                    e.preventDefault()
+                    $(this).tab('show')
+                })
+                $('.js-sidebar-mini-tabs').on('show.bs.tab', function(e) {
+                    $('.js-sidebar-mini-tabs > .active').removeClass('active')
+                    $(e.target).parent().addClass('active')
+                })
+            })()
+        </script>
+{% endfor %}
+{% endblock %}
