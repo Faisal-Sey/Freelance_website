@@ -28,7 +28,7 @@ class StudentLesson(View):
     def get(self, *args, **kwargs):
         slug = kwargs["slug"]
         current_course = CoursePreview.objects.filter(slug=slug)
-        context = {'course': current_course}
+        context = {'course': current_course, 'slug': slug}
         return render(self.request, "accounts/student-lesson.html", context)
 
 
